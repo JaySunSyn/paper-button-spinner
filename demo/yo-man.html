@@ -1,0 +1,31 @@
+
+<dom-module id="yo-man">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-button-spinner id="yobtn" raised on-tap="sayYo">
+      Say Yo
+    </paper-button-spinner>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'yo-man',
+
+      properties: {
+
+      },
+
+      sayYo: function() {
+        this.$.yobtn.working = true;
+        console.info('Yoooooo');
+      }
+    });
+  })();
+  </script>
+</dom-module>

@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-behaviors/paper-button-behavior.html">
 <link rel="import" href="../paper-spinner/paper-spinner.html">
 <!--
 A paper-button which gets disabled and shows a spinner when its working state is set to true.
@@ -34,6 +35,7 @@ Example:
       :host {
         display: inline-block;
         box-sizing: border-box;
+        position: relative;
       }
 
       .content {
@@ -78,16 +80,11 @@ Example:
     Polymer({
       is: 'paper-button-spinner',
 
-      properties: {
-        /**
-         * If true, the button should be styled with a shadow.
-         */
-        raised: {
-          type: Boolean,
-          reflectToAttribute: true,
-          value: false
-        },
+      behaviors: [
+        Polymer.PaperButtonBehavior
+      ],
 
+      properties: {
         /**
          * If true, the button is disabled and the spinner active.
          */
@@ -102,8 +99,10 @@ Example:
       _workingStateChanged: function() {
         if (this.working) {
           Polymer.dom(this.root).querySelector('paper-spinner').classList.add('active');
+          this.disabled = true;
         } else {
           Polymer.dom(this.root).querySelector('paper-spinner').classList.remove('active');
+          this.disabled = false;
         }
       }
     });
