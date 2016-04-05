@@ -7,6 +7,7 @@
   "description": "A paper-button which gets disabled and shows a spinner when its working state is set to true.",
   "keywords": [
     "web-component",
+    "web-components",
     "polymer",
     "seed",
     "button",
