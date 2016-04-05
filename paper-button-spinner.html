@@ -54,6 +54,10 @@ Example:
         @apply(--paper-button-spinner-button);
       }
 
+      paper-button[disabled] {
+        @apply(--paper-button-spinner-button-working);
+      }
+
       paper-spinner {
         padding: 0;
         max-width: 0;
@@ -63,7 +67,7 @@ Example:
       paper-spinner.active {
         padding: 0 6px;
         max-width: initial;
-        @apply(--paper-button-spinner-spinner-active);
+        @apply(--paper-button-spinner-spinner-working);
       }
     </style>
 
