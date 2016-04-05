@@ -1,0 +1,120 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-behaviors/paper-button-behavior.html">
+<link rel="import" href="../paper-spinner/paper-spinner.html">
+<!--
+A paper-button which gets disabled and shows a spinner when its working state is set to true.
+
+Example:
+
+    <paper-button-spinner>Save</paper-button-spinner>
+
+@demo demo/index.html
+@hero hero.svg
+
+
+### Styling
+The following custom properties and mixins are also available for styling:
+Custom property
+
+Custom property | Description | Default
+`--paper-button-spinner-button` | Mixin applied to the paper-button | `{}`
+`--paper-button-spinner-button-working` | Mixin applied to the disabled paper-button | `{}`
+`--paper-button-spinner-spinner` | Mixin applied to the paper-spinner | `{}`
+`--paper-button-spinner-spinner-working` | Mixin applied to the active paper-spinner | `{}`
+
+-->
+
+<dom-module id="paper-button-spinner">
+  <template>
+    <style is="custom-style">
+      :host {
+        display: inline-block;
+        box-sizing: border-box;
+        position: relative;
+      }
+
+      .content {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      paper-button {
+        @apply(--paper-button-spinner-button);
+      }
+
+      paper-button[disabled] {
+        @apply(--paper-button-spinner-button-working);
+      }
+
+      paper-spinner {
+        padding: 0;
+        max-width: 0;
+        @apply(--paper-button-spinner-spinner);
+      }
+
+      paper-spinner.active {
+        padding: 0 6px;
+        max-width: initial;
+        @apply(--paper-button-spinner-spinner-working);
+      }
+    </style>
+
+    <paper-button raised$=[[raised]] disabled$=[[working]]>
+      <span class="content">
+        <paper-spinner active$=[[working]]></paper-spinner>
+        <content></content>
+      </span>
+    </paper-button>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'paper-button-spinner',
+
+      behaviors: [
+        Polymer.PaperButtonBehavior
+      ],
+
+      properties: {
+        /**
+         * If true, the button is disabled and the spinner active.
+         */
+        working: {
+          type: Boolean,
+          reflectToAttribute: true,
+          value: false,
+          observer: '_workingStateChanged'
+        }
+      },
+
+      _workingStateChanged: function() {
+        if (this.working) {
+          Polymer.dom(this.root).querySelector('paper-spinner').classList.add('active');
+          this.disabled = true;
+        } else {
+          Polymer.dom(this.root).querySelector('paper-spinner').classList.remove('active');
+          this.disabled = false;
+        }
+      }
+    });
+  </script>
+</dom-module>

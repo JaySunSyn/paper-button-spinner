@@ -1,0 +1,42 @@
+{
+  "name": "paper-button-spinner",
+  "authors": [
+    "Jalal Fathi <jfathi.mail@gmail.com>"
+  ],
+  "description": "A paper-button which gets disabled and shows a spinner when its working state is set to true.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "seed",
+    "button",
+    "spinner"
+  ],
+  "main": "paper-button-spinner.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/JaySunSyn/paper-button-spinner/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "paper-button": "PolymerElements/paper-button#^1.0.11",
+    "paper-spinner": "PolymerElements/paper-spinner#^1.1.1",
+    "paper-behaviors": "polymerelements/paper-behaviors#^1.0.11"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^4.0.0"
+  },
+  "_release": "a524be8aac",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a524be8aaca0b4c7e3963f9b6bbae60ada133938"
+  },
+  "_source": "git@github.com:JaySunSyn/paper-button-spinner.git",
+  "_target": "master",
+  "_originalSource": "git@github.com:JaySunSyn/paper-button-spinner",
+  "_direct": true
+}
