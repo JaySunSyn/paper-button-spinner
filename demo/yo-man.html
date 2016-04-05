@@ -7,7 +7,7 @@
       }
     </style>
     <paper-button-spinner id="yobtn" raised on-tap="sayYo">
-      Say Yo
+      Say Yo in console
     </paper-button-spinner>
   </template>
   <script>
@@ -16,10 +16,6 @@
 
     Polymer({
       is: 'yo-man',
-
-      properties: {
-
-      },
 
       sayYo: function() {
         this.$.yobtn.working = true;
